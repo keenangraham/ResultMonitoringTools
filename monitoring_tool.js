@@ -1,7 +1,7 @@
 
         
            d3.json("datatest.json", function(error, Data) {
-          
+            var state = ["Result"];
             var radiusSet = 15;       
             var spr = 20;
             var rowsNeeded = Math.ceil(Data.length/spr);
@@ -36,7 +36,7 @@
 
             var tip = d3.tip()
                         .attr('class', 'd3-tip')
-                        .offset([-20, 20])
+                        .offset([-20, 0])
                         .html(function(d) {
                             if (d.Positive === 1) {
                                 return  "<strong>Order:</strong> <span style='color:#d95f02'>" + d.Order_ID  + "</span><br>" +
@@ -108,15 +108,7 @@
                                     tip.show(d);
                                 })
                                 .on("mouseout", function(d) {
-                                    d3.selectAll("circle:not(.selected)")
-                                    .style({fill: function(d) { 
-                                if (d.Positive === 1) { 
-                                    return "#d95f02"; 
-                                } else {
-                                    return "#b2df8a";
-                                }}
-
-                                    }); 
+                                    mouseOut();
                                     tip.hide(d);
                                 })
                                   .on("click", function(d) { 
@@ -127,13 +119,7 @@
                                     d3.select(this).classed("selected", true)
                                     .style({fill:"black"});
 
-                                    d3.selectAll("circle:not(.selected)")
-                                    .style({fill: function(d) { 
-                                    if (d.Positive === 1) { 
-                                        return "#d95f02"; 
-                                        } else {
-                                        return "#b2df8a";
-                                        }}});
+                                    mouseOut();
 
           
                                     d3.select("#Order").text(d.Order_ID)
@@ -143,6 +129,80 @@
                                     d3.select("#Organism").text(d.Organism);
 
                                     });
+
+function mouseOut() {
+    d3.selectAll("circle:not(.selected)")
+        .style({fill: function(d) { 
+                    if (state[0]=== "Result"){
+                            if (d.Positive === 1) { 
+                                return "#d95f02"; 
+                            } else {
+                                return "#b2df8a";
+                                            }
+                    }else if (state[0]=== "Ward"){
+                            return color(d.Ward_Name);
+                    }else if (state[0]=== "Ward"){
+                            return color(d.Ward_Name);
+                    }else if (state[0]=== "Date"){
+                            return color(d.Date);
+                    }else if (state[0]=== "Organism"){
+                            return color(d.Organism);
+                    }
+            }});
+}
+
+
+
+                 d3.select("#buttonResult").on("click", function() {
+                        state = ["Result"];
+                        d3.selectAll("circle")
+                        .transition()
+                        .duration(500)
+                        .style("fill", function(d) { 
+                                if (d.Positive === 1) { 
+                                    return "#d95f02"; 
+                                } else {
+                                    return "#b2df8a";
+                                }})
+
+                });
+
+                d3.select("#buttonWard").on("click", function() {
+                        state = ["Ward"];
+                        d3.selectAll("circle")
+                        .transition()
+                        .duration(500)
+                        .style("fill", function(d) {
+                            return color(d.Ward_Name);
+                        })
+
+                });
+
+                d3.select("#buttonDate").on("click", function() {
+                        state = ["Date"];
+                        d3.selectAll("circle")
+                        .transition()
+                        .duration(500)
+                        .style("fill", function(d) {
+                            return color(d.Date);
+                        })
+
+
+                })
+
+                d3.select("#buttonOrganism").on("click", function() {
+                        state = ["Organism"];
+                        d3.selectAll("circle")
+                        .transition()
+                        .duration(500)
+                        .style("fill", function(d) {
+                            return color(d.Organism);
+                        })
+
+
+                });
+
+
 
                 d3.select("#nRadius").on("input", function () {
                     update();

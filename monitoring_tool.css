@@ -178,6 +178,7 @@ header {
         }
 
 
+
        svg {
         border: 2px;  
         border-style: solid;
@@ -185,9 +186,10 @@ header {
        }
 
 
+
        div { 
            
-            margin: 1px auto; 
+            margin: 0px auto; 
 
 
                     }
@@ -221,8 +223,8 @@ header {
               box-sizing: border-box;
               display: inline;
               font-size: 10px;
-              width: 75%;
-              line-height: 1;
+              width: 100%;
+              line-height: 0.5;
               color: rgba(0, 0, 0, 0.8);
               content: "\25BC";
               position: absolute;

@@ -16,6 +16,7 @@
         <script type="text/javascript" src="d3.v3.js"></script>
         <script type="text/javascript" src="index.js"></script>
         
+        
     </head>
     <body>
 
@@ -32,50 +33,34 @@
     
 <div class="col-md-3">
     
-        <h2 class="text-nowrap"><small><b>Sample Overview</b><br>Parasitology Monitoring Tool</small></h2>
-        <p class="text-nowrap"> 
-        <button type="button" class="btn btn-default"><b>Result</b></button> 
-        <button type="button" class="btn btn-default"><b>Ward Name</b></button> 
-        <button type="button" class="btn btn-default"><b>Tech</b></button></p>
         
-          <div class="radio-inline">
-                    <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="optionRegular" checked="checked">
-                    Regular
-                    </label>
-                </div>
-            
-    
-          <div class="radio-inline">
-                    <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="optionSmall">
-                    Small
-                    </label>
-                </div>
-         
 
-          <div class="radio-inline">
-                    <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="optionExtraSmall">
-                    Extra Small
-                    </label>
-                </div>
+
+     
         
-        <div>
-      
-
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-        </div>
-
 
         <ul class="list-group">
-
+            <li class="list-group-item text-center text-nowrap">
+                <strong>
+                    <h5>Parasitology Monitoring Tool</h5>
+                </strong>
+            </li>
+            <li class="list-group-item text-nowrap text-center">
+                <p class="text-center">
+                    <b>
+                        Color By
+                    </b>
+                </p>
+                <p class="text-nowrap">
+                    <button type="button" class="btn btn-default" id="buttonResult"><b>Result</b></button> 
+                    <button type="button" class="btn btn-default" id="buttonWard"><b>Ward Name</b></button> 
+                    <button type="button" class="btn btn-default" id="buttonDate"><b>Date</b></button>
+                </p>
+                <p class="text-nowrap">
+                    <button type="button" class="btn btn-default" id="buttonOrganism"><b>Organism</b></button> 
+                    <button type="button" class="btn btn-default" id="buttonTech"><b>Technician</b></button>
+                </p>
+            </li>
             <li class="list-group-item">
                 <p class="text-center"><b>Samples Per Row</b></p>
                 <div class="range">
