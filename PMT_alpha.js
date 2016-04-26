@@ -27,6 +27,12 @@
             var parseDate = d3.time.format("%Y-%m-%d").parse;
 
             var formatTime = d3.time.format("%B %e, %Y");
+            
+            var dateFn = function(d) { return formatTime(parseDate(d.Date))};
+
+            var dateRangefirst = d3.min(Data, dateFn);
+            var dateRangelast = d3.max(Data, dateFn);
+
 
             var tip = d3.tip()
                         .attr('class', 'd3-tip')
@@ -52,6 +58,16 @@
                         .style("opacity", 0); */
 
             var color = d3.scale.category20(); 
+            
+            var title = d3.select("#dateRange")
+                    .append("svg")
+                    .attr("width", 600)
+                    .attr("height", 40)
+                    .append("text")
+                    .attr("class", "title")
+                    .attr("dy", "1.4em")
+                    .attr("font-size", "18px")
+                    .text("Date Range: " + dateRangefirst + " - " + dateRangelast);
 
             var canvas = d3.select("#viz")
                             .append("svg")
